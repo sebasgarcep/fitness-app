@@ -3,7 +3,7 @@ import { StyleSheet } from 'react-native';
 
 import { Text, View } from '../components/Themed';
 
-export default function TabTwoScreen() {
+export default function MealTabScreen() {
     return (
         <View style={styles.container}>
             <Text style={styles.title}>Tab Two</Text>

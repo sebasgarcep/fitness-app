@@ -3,7 +3,7 @@ import { StyleSheet } from 'react-native';
 
 import { Text, View } from '../components/Themed';
 
-export default function ExerciseScreen() {
+export default function ExerciseTabScreen() {
     return (
         <View style={styles.container}>
             <Text style={styles.title}>Tab One</Text>

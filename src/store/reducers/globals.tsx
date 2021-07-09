@@ -1,4 +1,4 @@
-import { Action } from "../actions";
+import { Action } from "../../types";
 
 export type GlobalState = {
     randomSeed: string,
