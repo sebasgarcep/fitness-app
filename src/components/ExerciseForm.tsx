@@ -24,6 +24,7 @@ export default function ExerciseForm({ id, onSubmit }: ExerciseFormProps) {
     const [type, setType] = React.useState((!exercise || exercise.reps) ? 'reps' : 'time');
     const [reps, setReps] = React.useState(exercise?.reps?.toString() || '');
     const [time, setTime] = React.useState(exercise?.time?.toString() || '');
+    const [rest, setRest] = React.useState(exercise?.rest?.toString() || '');
     const [comments, setComments] = React.useState(exercise?.comments || '');
 
     const pickImg = async () => {
@@ -55,18 +56,20 @@ export default function ExerciseForm({ id, onSubmit }: ExerciseFormProps) {
             name,
             img,
             sets: Number.parseInt(sets),
+            rest: Number.parseInt(rest),
             comments,
         };
 
         if (Number.isNaN(data.sets)) { return; }
+        if (Number.isNaN(data.rest)) { return; }
 
         if (type === "reps") {
-            data.reps = Number.parseInt(reps, 10);
+            data.reps = Number.parseInt(reps);
             if (Number.isNaN(data.reps)) { return; }
         }
 
         if (type === "time") {
-            data.time = Number.parseInt(time, 10);
+            data.time = Number.parseInt(time);
             if (Number.isNaN(data.time)) { return; }
         }
 
@@ -143,6 +146,14 @@ export default function ExerciseForm({ id, onSubmit }: ExerciseFormProps) {
                         style={styles.input}
                     />
                 )}
+                <TextInput
+                    label="Rest Time"
+                    keyboardType="number-pad"
+                    right={<TextInput.Affix text="seconds" />}
+                    value={rest}
+                    onChangeText={setRest}
+                    style={styles.input}
+                />
                 <TextInput
                     label="Comments"
                     multiline

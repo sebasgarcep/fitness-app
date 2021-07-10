@@ -45,9 +45,13 @@ function ExerciseCard({ data }: ExerciseCardProps) {
                     {!!data.time && (
                         <View style={{ flex: 1 }}>
                             <Caption>Time</Caption>
-                            <Subheading>{data.time} seconds</Subheading>
+                            <Subheading>{data.time}s</Subheading>
                         </View>
                     )}
+                    <View style={{ flex: 1 }}>
+                        <Caption>Rest</Caption>
+                        <Subheading>{data.rest}s</Subheading>
+                    </View>
                 </View>
             </Card.Content>
             <Card.Actions style={styles.cardActions}>

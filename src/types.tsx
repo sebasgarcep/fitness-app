@@ -12,6 +12,7 @@ export type Exercise = {
     sets: number,
     reps?: number,
     time?: number,
+    rest: number,
     comments: string,
 };
 

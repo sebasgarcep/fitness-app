@@ -10,6 +10,7 @@ const initialState: ExerciseState = {
             img: 'https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse3.mm.bing.net%2Fth%3Fid%3DOIP.R9_KDThk0hu8M4dnn3TlTwAAAA%26pid%3DApi&f=1',
             sets: 3,
             reps: 20,
+            rest: 60,
             comments: '10lbs Dumbbells',
         },
         {
@@ -19,6 +20,7 @@ const initialState: ExerciseState = {
             img: 'https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse2.mm.bing.net%2Fth%3Fid%3DOIP.qLEkzaH-zwxVTpDg3vFJ4QAAAA%26pid%3DApi&f=1',
             sets: 3,
             time: 45,
+            rest: 60,
             comments: '',
         },
     ],
