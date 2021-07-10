@@ -2,7 +2,7 @@ import { useNavigation } from '@react-navigation/native';
 import { StackNavigationProp, StackScreenProps } from '@react-navigation/stack';
 import * as React from 'react';
 import { ScrollView, StyleSheet } from 'react-native';
-import { Button, Caption, Card, FAB, Headline, Paragraph, Subheading, Title } from 'react-native-paper';
+import { Avatar, Button, Caption, Card, FAB, Headline, Paragraph, Subheading, Title } from 'react-native-paper';
 
 import { View } from '../components/Themed';
 import { exerciseTargets } from '../constants';
@@ -81,6 +81,23 @@ function ExercisePlanByTarget({ target, plan }: ExercisePlanByTargetProps) {
     );
 }
 
+function EmptyExercisePlan() {
+    return (
+        <View style={styles.containerEmptyState}>
+            <Avatar.Icon
+                icon="weight-lifter"
+                size={90}
+            />
+            <Headline>
+                Your Exercise Plan is Empty
+            </Headline>
+            <Caption>
+                Press on the "Add Exercise" button
+            </Caption>
+        </View>
+    );
+}
+
 export default function ExercisePlanScreen({
     navigation,
 }: StackScreenProps<SettingsTabParamList, 'ExercisePlanScreen'>) {
@@ -94,15 +111,19 @@ export default function ExercisePlanScreen({
 
     return (
         <View style={styles.container}>
-            <ScrollView contentContainerStyle={styles.scroll}>
-                {exerciseTargets.map(item => (
-                    <ExercisePlanByTarget
-                        key={item}
-                        target={item}
-                        plan={exercisePlanGroupedByTarget.get(item)!}
-                    />
-                ))}
-            </ScrollView>
+            {exerciseTargets.length > 0 ? (
+                <ScrollView contentContainerStyle={styles.scroll}>
+                    {exerciseTargets.map(item => (
+                        <ExercisePlanByTarget
+                            key={item}
+                            target={item}
+                            plan={exercisePlanGroupedByTarget.get(item)!}
+                        />
+                    ))}
+                </ScrollView>
+            ) : (
+                <EmptyExercisePlan />
+            )}
             <FAB
                 icon="plus"
                 label="Add Exercise"
@@ -116,6 +137,11 @@ export default function ExercisePlanScreen({
 const styles = StyleSheet.create({
     container: {
         flex: 1,
+    },
+    containerEmptyState: {
+        flex: 1,
+        alignItems: 'center',
+        justifyContent: 'center',
     },
     scroll: {
         padding: 20,
