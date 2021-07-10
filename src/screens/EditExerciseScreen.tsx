@@ -4,21 +4,22 @@ import { ScrollView, StyleSheet } from 'react-native';
 
 import { Exercise, SettingsTabParamList } from '../types';
 import ExerciseForm from '../components/ExerciseForm';
-import { useCreateExercise } from '../store/actions';
+import { useEditExercise } from '../store/actions';
 
-export default function CreateExerciseScreen({
+export default function EditExerciseScreen({
     navigation,
-}: StackScreenProps<SettingsTabParamList, 'CreateExerciseScreen'>) {
-    const createExercise = useCreateExercise();
+    route,
+}: StackScreenProps<SettingsTabParamList, 'EditExerciseScreen'>) {
+    const editExercise = useEditExercise();
 
     const onSubmit = (data: Exercise) => {
-        createExercise(data);
+        editExercise(data);
         navigation.goBack();
     };
 
     return (
         <ScrollView contentContainerStyle={styles.container}>
-            <ExerciseForm onSubmit={onSubmit} />
+            <ExerciseForm id={route.params.id} onSubmit={onSubmit} />
         </ScrollView>
     );
 }

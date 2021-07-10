@@ -15,6 +15,7 @@ import MealTabScreen from '../screens/MealTabScreen';
 import SettingsMenuScreen from '../screens/SettingsMenuScreen';
 import ExercisePlanScreen from '../screens/ExercisePlanScreen';
 import CreateExerciseScreen from '../screens/CreateExerciseScreen';
+import EditExerciseScreen from '../screens/EditExerciseScreen';
 import { BottomTabParamList, ExerciseTabParamList, MealTabParamList, SettingsTabParamList } from '../types';
 
 const BottomTab = createBottomTabNavigator<BottomTabParamList>();
@@ -111,6 +112,11 @@ function SettingsTabNavigator() {
                 name="CreateExerciseScreen"
                 component={CreateExerciseScreen}
                 options={{ headerTitle: 'Create Exercise' }}
+            />
+            <SettingsTabStack.Screen
+                name="EditExerciseScreen"
+                component={EditExerciseScreen}
+                options={{ headerTitle: 'Edit Exercise' }}
             />
         </SettingsTabStack.Navigator>
     );

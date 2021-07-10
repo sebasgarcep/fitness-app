@@ -2,12 +2,14 @@
  * App State
  */
 
+export type ExerciseTarget = 'cardio' | 'quads' | 'glutes' | 'push' | 'pull' | 'core';
+
 export type Exercise = {
     id: string,
-    type: 'cardio' | 'quads' | 'glutes' | 'push' | 'pull' | 'core',
+    target: ExerciseTarget,
     name: string,
     img: string,
-    rounds: number,
+    sets: number,
     reps?: number,
     time?: number,
     comments: string,
@@ -17,8 +19,30 @@ export type ExerciseState = {
     plan: Exercise[],
 };
 
+export type GlobalState = {
+    randomSeed: string,
+};
+
+export type MealType = 'breakfast' | 'lunch' | 'dinner';
+
+export type Meal = {
+    id: string,
+    type: MealType,
+    name: string,
+    img: string,
+    rounds: number,
+    reps?: number,
+    time?: number,
+};
+
+export type MealState = {
+    plan: Array<Meal>,
+};
+
 export type RootState = {
     exercises: ExerciseState,
+    globals: GlobalState,
+    meals: MealState,
 };
 
 /**
@@ -30,10 +54,20 @@ export type CreateExerciseAction = {
     data: Exercise,
 };
 
-export type NoopAction = { type: 'NOOP' };
+export type EditExerciseAction = {
+    type: 'EDIT_EXERCISE',
+    data: Exercise,
+};
+
+export type DeleteExerciseAction = {
+    type: 'DELETE_EXERCISE',
+    id: string,
+};
 
 export type Action =
-    | NoopAction
+    | CreateExerciseAction
+    | EditExerciseAction
+    | DeleteExerciseAction
 ;
 
 /**
@@ -64,4 +98,5 @@ export type SettingsTabParamList = {
     SettingsMenuScreen: undefined,
     ExercisePlanScreen: undefined,
     CreateExerciseScreen: undefined,
+    EditExerciseScreen: { id: string },
 };

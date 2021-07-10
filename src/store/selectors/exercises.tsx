@@ -1,7 +1,10 @@
-import { useSelector } from "react-redux";
-
-import { Exercise, RootState } from "../../types";
+import { Exercise } from "../../types";
+import { useSelector } from "./utils";
 
 export function useExercisePlan(): Exercise[] {
-    return useSelector<RootState, Exercise[]>(state => state.exercises.plan);
+    return useSelector(state => state.exercises.plan);
+}
+
+export function useExercise(id: string | undefined): Exercise | undefined {
+    return useSelector(state => state.exercises.plan.find(item => item.id === id));
 }

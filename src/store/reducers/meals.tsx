@@ -1,22 +1,6 @@
-import { Action } from "../../types";
-
-export type MealState = {
-    types: Array<{
-        id: string,
-        name: string,
-        img: string,
-    }>,
-    plan: Array<{
-        id: string,
-        type: string,
-        rounds: number,
-        reps?: number,
-        time?: number,
-    }>,
-};
+import { Action, MealState } from "../../types";
 
 const initialState: MealState = {
-    types: [],
     plan: [],
 };
 

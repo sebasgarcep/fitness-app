@@ -1,8 +1,10 @@
 import { useDispatch } from 'react-redux';
 
-export function withDispatch<T extends (...args: any[]) => any>(callback: T): (...funcArgs: Parameters<T>) => ReturnType<T> {
-    return (...args: Parameters<T>) => {
+export function withDispatch<T extends (...args: any[]) => any>(callback: T): () => (...funcArgs: Parameters<T>) => ReturnType<T> {
+    return () => {
         const dispatch = useDispatch();
-        return dispatch(callback(...args));
+        return (...args: Parameters<T>) => {
+            return dispatch(callback(...args));   
+        };
     };
 }

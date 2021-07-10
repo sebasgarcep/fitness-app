@@ -1,8 +1,4 @@
-import { Action } from "../../types";
-
-export type GlobalState = {
-    randomSeed: string,
-};
+import { Action, GlobalState } from "../../types";
 
 const initialState: GlobalState = {
     randomSeed: 'asdfghjkl',
