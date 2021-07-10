@@ -1,5 +1,3 @@
-import { AnyAction } from 'redux';
-
 /**
  * App State
  */
