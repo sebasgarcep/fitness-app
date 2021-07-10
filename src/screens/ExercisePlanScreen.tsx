@@ -55,7 +55,7 @@ function ExerciseCard({ data }: ExerciseCardProps) {
                 </View>
             </Card.Content>
             <Card.Actions style={styles.cardActions}>
-                <Button icon="pencil" onPress={() => navigation.push("EditExerciseScreen", { id: data.id })}>
+                <Button icon="pencil" onPress={() => navigation.navigate("EditExerciseScreen", { id: data.id })}>
                     Edit
                 </Button>
                 <Button icon="delete" onPress={() => deleteExercise(data.id)}>
@@ -106,7 +106,7 @@ export default function ExercisePlanScreen({
     const exerciseTargets = Array.from(exercisePlanGroupedByTarget.keys()).sort();
 
     const toCreateExercise = () => {
-        navigation.push("CreateExerciseScreen")
+        navigation.navigate("CreateExerciseScreen")
     };
 
     return (

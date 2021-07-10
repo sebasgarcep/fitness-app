@@ -14,7 +14,7 @@ export default function SettingsMenuScreen({
             <List.Item
                 title="Exercise Plan"
                 description="Plan the elements of your routine"
-                onPress={() => navigation.push("ExercisePlanScreen")}
+                onPress={() => navigation.navigate("ExercisePlanScreen")}
                 left={props => <List.Icon {...props} icon="dumbbell" />}
             />
             <List.Item
