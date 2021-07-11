@@ -89,6 +89,7 @@ export type BottomTabParamList = {
 
 export type ScreenStackParamList = {
     DailyExerciseScreen: undefined,
+    ExerciseTrackerScreen: undefined,
     MealTabScreen: undefined,
     SettingsMenuScreen: undefined,
     ExercisePlanScreen: undefined,

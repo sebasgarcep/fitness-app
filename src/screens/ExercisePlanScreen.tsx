@@ -2,7 +2,7 @@ import { StackScreenProps } from '@react-navigation/stack';
 import * as React from 'react';
 import { StyleSheet } from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
-import { Avatar, Caption, FAB, Headline } from 'react-native-paper';
+import { Avatar, Caption, Headline } from 'react-native-paper';
 
 import Container from '../components/Container';
 import ExerciseCard from '../components/ExerciseCard';
@@ -12,6 +12,7 @@ import { useExercisePlan } from '../store/selectors';
 import { exerciseTargets } from '../constants';
 import { Exercise, ExerciseTarget, ScreenStackParamList } from '../types';
 import { groupBy } from '../utils';
+import FloatingActionButton from '../components/FloatingActionButton';
 
 type ExercisePlanByTargetProps = {
     target: ExerciseTarget,
@@ -86,11 +87,10 @@ export default function ExercisePlanScreen({
             ) : (
                 <EmptyExercisePlan />
             )}
-            <FAB
+            <FloatingActionButton
                 icon="plus"
                 label="Add Exercise"
                 onPress={toCreateExercise}
-                style={styles.fab}
             />
         </Container>
     );
@@ -105,11 +105,5 @@ const styles = StyleSheet.create({
     scroll: {
         padding: 20,
         paddingBottom: 60,
-    },
-    fab: {
-        position: 'absolute',
-        margin: 16,
-        right: 0,
-        bottom: 0,
     },
 });

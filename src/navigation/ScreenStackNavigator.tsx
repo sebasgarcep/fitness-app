@@ -1,13 +1,14 @@
 import { createStackNavigator } from '@react-navigation/stack';
 import * as React from 'react';
 
+import { ScreenStackParamList } from '../types';
 import DailyExerciseScreen from '../screens/DailyExerciseScreen';
 import MealTabScreen from '../screens/MealTabScreen';
 import SettingsMenuScreen from '../screens/SettingsMenuScreen';
 import ExercisePlanScreen from '../screens/ExercisePlanScreen';
 import CreateExerciseScreen from '../screens/CreateExerciseScreen';
 import EditExerciseScreen from '../screens/EditExerciseScreen';
-import { ScreenStackParamList } from '../types';
+import ExerciseTrackerScreen from '../screens/ExerciseTrackerScreen';
 
 function createScreenStackNavigator(initialRouteName: keyof ScreenStackParamList) {
     const ScreenStack = createStackNavigator<ScreenStackParamList>();
@@ -44,6 +45,11 @@ function createScreenStackNavigator(initialRouteName: keyof ScreenStackParamList
                     name="EditExerciseScreen"
                     component={EditExerciseScreen}
                     options={{ headerTitle: 'Edit Exercise' }}
+                />
+                <ScreenStack.Screen
+                    name="ExerciseTrackerScreen"
+                    component={ExerciseTrackerScreen}
+                    options={{ headerTitle: "Exercise Tracker" }}
                 />
             </ScreenStack.Navigator>
         );

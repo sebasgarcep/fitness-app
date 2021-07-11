@@ -1,5 +1,5 @@
 import { TabActions, useNavigation } from '@react-navigation/native';
-import { StackNavigationProp } from '@react-navigation/stack';
+import { StackNavigationProp, StackScreenProps } from '@react-navigation/stack';
 import random from 'random';
 import * as React from 'react';
 import { StyleSheet } from 'react-native';
@@ -8,6 +8,7 @@ import { Avatar, Button, Headline } from 'react-native-paper';
 
 import Container from '../components/Container';
 import ExerciseCard from '../components/ExerciseCard';
+import FloatingActionButton from '../components/FloatingActionButton';
 import IncompleteExercisePlanBanner from '../components/IncompleteExercisePlanBanner';
 import { View } from '../components/Themed';
 import { exerciseTargets } from '../constants';
@@ -39,8 +40,8 @@ function getDateAsString(date: Date) {
 
 function useDailyExercisePlan() {
     const plan = useExercisePlan();
-    const planByTarget = groupBy(plan, item => item.target);
     const seed = useRandomSeed();
+    const planByTarget = groupBy(plan, item => item.target);
     const date = getDateAsString(new Date());
     const rng = random.clone(`${seed}/${date}`);
     return exerciseTargets
@@ -55,18 +56,27 @@ function useDailyExercisePlan() {
         .map(item => item.data);
 }
 
-export default function DailyExerciseScreen() {
+export default function DailyExerciseScreen({
+    navigation,
+}: StackScreenProps<ScreenStackParamList, 'DailyExerciseScreen'>) {
     const dailyExercisePlan = useDailyExercisePlan();
     return (
         <Container>
             <IncompleteExercisePlanBanner />
             {dailyExercisePlan.length > 0 ? (
-                <ScrollView contentContainerStyle={styles.scroll}>
-                    <Headline style={styles.headline}>Today's Exercise Plan</Headline>
-                    {dailyExercisePlan.map(exercise => (
-                        <ExerciseCard key={exercise.id} exercise={exercise} />
-                    ))}
-                </ScrollView>
+                <React.Fragment>
+                    <ScrollView contentContainerStyle={styles.scroll}>
+                        <Headline style={styles.headline}>Today's Exercise Plan</Headline>
+                        {dailyExercisePlan.map(exercise => (
+                            <ExerciseCard key={exercise.id} exercise={exercise} />
+                        ))}
+                    </ScrollView>
+                    <FloatingActionButton
+                        icon="clock-outline"
+                        label="Begin Exercise"
+                        onPress={() => navigation.navigate("ExerciseTrackerScreen")}
+                    />
+                </React.Fragment>
             ) : (
                 <EmptyExercisePlan />
             )}
@@ -82,6 +92,7 @@ const styles = StyleSheet.create({
     },
     scroll: {
         padding: 20,
+        paddingBottom: 60,
     },
     headline: {
         marginBottom: 20,
