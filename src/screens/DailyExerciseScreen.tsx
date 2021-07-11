@@ -7,7 +7,7 @@ import { ScrollView } from 'react-native-gesture-handler';
 import { Avatar, Button, Headline } from 'react-native-paper';
 
 import Container from '../components/Container';
-import ExercisePlan from '../components/ExercisePlan';
+import ExerciseCard from '../components/ExerciseCard';
 import IncompleteExercisePlanBanner from '../components/IncompleteExercisePlanBanner';
 import { View } from '../components/Themed';
 import { exerciseTargets } from '../constants';
@@ -16,7 +16,7 @@ import { ScreenStackParamList } from '../types';
 import { groupBy } from '../utils';
 
 function EmptyExercisePlan() {
-    const navigation = useNavigation<StackNavigationProp<ScreenStackParamList, 'ExerciseTabScreen'>>();
+    const navigation = useNavigation<StackNavigationProp<ScreenStackParamList, 'DailyExerciseScreen'>>();
     return (
         <View style={styles.containerEmptyState}>
             <Avatar.Icon
@@ -55,7 +55,7 @@ function useDailyExercisePlan() {
         .map(item => item.data);
 }
 
-export default function ExerciseTabScreen() {
+export default function DailyExerciseScreen() {
     const dailyExercisePlan = useDailyExercisePlan();
     return (
         <Container>
@@ -63,7 +63,9 @@ export default function ExerciseTabScreen() {
             {dailyExercisePlan.length > 0 ? (
                 <ScrollView contentContainerStyle={styles.scroll}>
                     <Headline style={styles.headline}>Today's Exercise Plan</Headline>
-                    <ExercisePlan plan={dailyExercisePlan} />
+                    {dailyExercisePlan.map(exercise => (
+                        <ExerciseCard key={exercise.id} exercise={exercise} />
+                    ))}
                 </ScrollView>
             ) : (
                 <EmptyExercisePlan />

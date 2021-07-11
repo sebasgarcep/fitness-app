@@ -5,11 +5,48 @@ import { ScrollView } from 'react-native-gesture-handler';
 import { Avatar, Caption, FAB, Headline } from 'react-native-paper';
 
 import Container from '../components/Container';
-import ExercisePlan from '../components/ExercisePlan';
+import ExerciseCard from '../components/ExerciseCard';
 import IncompleteExercisePlanBanner from '../components/IncompleteExercisePlanBanner';
 import { View } from '../components/Themed';
 import { useExercisePlan } from '../store/selectors';
-import { ScreenStackParamList } from '../types';
+import { exerciseTargets } from '../constants';
+import { Exercise, ExerciseTarget, ScreenStackParamList } from '../types';
+import { groupBy } from '../utils';
+
+type ExercisePlanByTargetProps = {
+    target: ExerciseTarget,
+    plan: Exercise[],
+};
+
+function ExercisePlanByTarget({ target, plan }: ExercisePlanByTargetProps) {
+    const targetLabel = exerciseTargets.find(item => item.id === target)!.label;
+    return (
+        <React.Fragment>
+            <Headline>{targetLabel}</Headline>
+            {plan.map(item => <ExerciseCard key={item.id} actions exercise={item} />)}
+        </React.Fragment>
+    );
+}
+
+type ExercisePlanProps = {
+    plan: Exercise[],
+};
+
+function ExercisePlan({ plan }: ExercisePlanProps) {
+    const planGroupedByTarget = groupBy(plan, item => item.target);
+    const planTargets = Array.from(planGroupedByTarget.keys()).sort();
+    return (
+        <React.Fragment>
+            {planTargets.map(item => (
+                <ExercisePlanByTarget
+                    key={item}
+                    target={item}
+                    plan={planGroupedByTarget.get(item)!}
+                />
+            ))}
+        </React.Fragment>
+    );
+}
 
 function EmptyExercisePlan() {
     return (
@@ -43,8 +80,6 @@ export default function ExercisePlanScreen({
             {exercisePlan.length > 0 ? (
                 <ScrollView contentContainerStyle={styles.scroll}>
                     <ExercisePlan
-                        headers
-                        actions
                         plan={exercisePlan}
                     />
                 </ScrollView>
