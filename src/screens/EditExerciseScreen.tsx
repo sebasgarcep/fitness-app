@@ -1,6 +1,7 @@
 import { StackScreenProps } from '@react-navigation/stack';
 import * as React from 'react';
-import { ScrollView, StyleSheet } from 'react-native';
+import { StyleSheet } from 'react-native';
+import { ScrollView } from 'react-native-gesture-handler';
 
 import { Exercise, ScreenStackParamList } from '../types';
 import ExerciseForm from '../components/ExerciseForm';

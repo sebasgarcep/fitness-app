@@ -16,8 +16,22 @@ export type Exercise = {
     comments: string,
 };
 
+export type ExerciseStepStatus = 'pending' | 'progress' | 'skipped' | 'completed';
+
+export type ExerciseStep =
+    | { id: string, status: ExerciseStepStatus, type: 'time', exercise: string, total: number, progress: number }
+    | { id: string, status: ExerciseStepStatus, type: 'reps', exercise: string, total: number }
+    | { id: string, status: ExerciseStepStatus, type: 'rest', total: number, progress: number }
+;
+
+export type ExerciseTracker = {
+    plan: Record<string, Exercise>,
+    steps: ExerciseStep[],
+};
+
 export type ExerciseState = {
     plan: Exercise[],
+    tracker: Record<string, ExerciseTracker>,
 };
 
 export type GlobalState = {
@@ -65,10 +79,35 @@ export type DeleteExerciseAction = {
     id: string,
 };
 
+export type BeginExerciseTrackerAction = {
+    type: 'BEGIN_EXERCISE_TRACKER',
+    id: string,
+};
+
+export type CompleteExerciseTrackerStepAction = {
+    type: 'COMPLETE_EXERCISE_TRACKER_STEP',
+    id: string,
+};
+
+export type SkipExerciseTrackerStepAction = {
+    type: 'SKIP_EXERCISE_TRACKER_STEP',
+    id: string,
+};
+
+export type ProgressExerciseTrackerStepAction = {
+    type: 'PROGRESS_EXERCISE_TRACKER_STEP',
+    id: string,
+    progress: number,
+};
+
 export type Action =
     | CreateExerciseAction
     | EditExerciseAction
     | DeleteExerciseAction
+    | BeginExerciseTrackerAction
+    | CompleteExerciseTrackerStepAction
+    | SkipExerciseTrackerStepAction
+    | ProgressExerciseTrackerStepAction
 ;
 
 /**

@@ -7,3 +7,7 @@ export function groupBy<T, G>(collection: Iterable<T>, groupFunction: (arg: T) =
     }
     return groups;
 }
+
+export function toDateString(date: Date): string {
+    return date.toISOString().slice(0, 10);
+}
