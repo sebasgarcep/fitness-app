@@ -3,6 +3,7 @@ import { StackNavigationProp, StackScreenProps } from '@react-navigation/stack';
 import * as React from 'react';
 import { ScrollView, StyleSheet } from 'react-native';
 import { Avatar, Button, Caption, Card, FAB, Headline, Paragraph, Subheading, Title } from 'react-native-paper';
+import IncompleteExercisePlanBanner from '../components/IncompleteExercisePlanBanner';
 
 import { View } from '../components/Themed';
 import { exerciseTargets } from '../constants';
@@ -81,6 +82,26 @@ function ExercisePlanByTarget({ target, plan }: ExercisePlanByTargetProps) {
     );
 }
 
+type ExercisePlanProps = {
+    exercisePlan: Exercise[],
+};
+
+function ExercisePlan({ exercisePlan }: ExercisePlanProps) {
+    const exercisePlanGroupedByTarget = groupBy<Exercise, ExerciseTarget>(exercisePlan, item => item.target);
+    const exerciseTargets = Array.from(exercisePlanGroupedByTarget.keys()).sort();
+    return (
+        <ScrollView contentContainerStyle={styles.scroll}>
+            {exerciseTargets.map(item => (
+                <ExercisePlanByTarget
+                    key={item}
+                    target={item}
+                    plan={exercisePlanGroupedByTarget.get(item)!}
+                />
+            ))}
+        </ScrollView>
+    );
+}
+
 function EmptyExercisePlan() {
     return (
         <View style={styles.containerEmptyState}>
@@ -102,8 +123,6 @@ export default function ExercisePlanScreen({
     navigation,
 }: StackScreenProps<SettingsTabParamList, 'ExercisePlanScreen'>) {
     const exercisePlan = useExercisePlan();
-    const exercisePlanGroupedByTarget = groupBy<Exercise, ExerciseTarget>(exercisePlan, item => item.target);
-    const exerciseTargets = Array.from(exercisePlanGroupedByTarget.keys()).sort();
 
     const toCreateExercise = () => {
         navigation.navigate("CreateExerciseScreen")
@@ -111,16 +130,9 @@ export default function ExercisePlanScreen({
 
     return (
         <View style={styles.container}>
-            {exerciseTargets.length > 0 ? (
-                <ScrollView contentContainerStyle={styles.scroll}>
-                    {exerciseTargets.map(item => (
-                        <ExercisePlanByTarget
-                            key={item}
-                            target={item}
-                            plan={exercisePlanGroupedByTarget.get(item)!}
-                        />
-                    ))}
-                </ScrollView>
+            <IncompleteExercisePlanBanner />
+            {exercisePlan.length > 0 ? (
+                <ExercisePlan exercisePlan={exercisePlan} />
             ) : (
                 <EmptyExercisePlan />
             )}

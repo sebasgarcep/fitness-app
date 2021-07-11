@@ -3,8 +3,9 @@ import { StackNavigationProp, StackScreenProps } from '@react-navigation/stack';
 import * as React from 'react';
 import { StyleSheet } from 'react-native';
 import { Avatar, Button, Headline } from 'react-native-paper';
+import IncompleteExercisePlanBanner from '../components/IncompleteExercisePlanBanner';
 
-import { Text, View } from '../components/Themed';
+import { View } from '../components/Themed';
 import { useExercisePlan } from '../store/selectors';
 import { ExerciseTabParamList } from '../types';
 
@@ -30,6 +31,7 @@ export default function ExerciseTabScreen() {
     const exercisePlan = useExercisePlan();
     return (
         <View style={styles.container}>
+            <IncompleteExercisePlanBanner />
             {exercisePlan.length > 0 ? (
                 null
             ) : (
@@ -42,8 +44,6 @@ export default function ExerciseTabScreen() {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        alignItems: 'center',
-        justifyContent: 'center',
     },
     containerEmptyState: {
         flex: 1,
