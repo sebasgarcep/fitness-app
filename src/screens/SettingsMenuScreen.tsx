@@ -3,11 +3,11 @@ import * as React from 'react';
 import { List } from 'react-native-paper';
 
 import Container from '../components/Container';
-import { SettingsTabParamList } from '../types';
+import { ScreenStackParamList } from '../types';
 
 export default function SettingsMenuScreen({
     navigation,
-}: StackScreenProps<SettingsTabParamList, 'SettingsMenuScreen'>) {
+}: StackScreenProps<ScreenStackParamList, 'SettingsMenuScreen'>) {
     return (
         <Container>
             <List.Item

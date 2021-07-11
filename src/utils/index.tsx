@@ -1,4 +1,4 @@
-export function groupBy<T, G>(collection: Iterable<T>, groupFunction: (arg: T) => any): Map<G, T[]> {
+export function groupBy<T, G>(collection: Iterable<T>, groupFunction: (arg: T) => G): Map<G, T[]> {
     const groups = new Map<G, T[]>();
     for (const item of collection) {
         const label = groupFunction(item);

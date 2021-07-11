@@ -2,13 +2,13 @@ import { StackScreenProps } from '@react-navigation/stack';
 import * as React from 'react';
 import { ScrollView, StyleSheet } from 'react-native';
 
-import { Exercise, SettingsTabParamList } from '../types';
+import { Exercise, ScreenStackParamList } from '../types';
 import ExerciseForm from '../components/ExerciseForm';
 import { useCreateExercise } from '../store/actions';
 
 export default function CreateExerciseScreen({
     navigation,
-}: StackScreenProps<SettingsTabParamList, 'CreateExerciseScreen'>) {
+}: StackScreenProps<ScreenStackParamList, 'CreateExerciseScreen'>) {
     const createExercise = useCreateExercise();
 
     const onSubmit = (data: Exercise) => {

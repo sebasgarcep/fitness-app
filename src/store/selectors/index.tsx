@@ -1,1 +1,2 @@
-export * from './exercises';
+export * from "./exercises";
+export * from "./globals";

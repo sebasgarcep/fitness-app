@@ -2,14 +2,14 @@ import { StackScreenProps } from '@react-navigation/stack';
 import * as React from 'react';
 import { ScrollView, StyleSheet } from 'react-native';
 
-import { Exercise, SettingsTabParamList } from '../types';
+import { Exercise, ScreenStackParamList } from '../types';
 import ExerciseForm from '../components/ExerciseForm';
 import { useEditExercise } from '../store/actions';
 
 export default function EditExerciseScreen({
     navigation,
     route,
-}: StackScreenProps<SettingsTabParamList, 'EditExerciseScreen'>) {
+}: StackScreenProps<ScreenStackParamList, 'EditExerciseScreen'>) {
     const editExercise = useEditExercise();
 
     const onSubmit = (data: Exercise) => {

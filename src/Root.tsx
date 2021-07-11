@@ -21,14 +21,14 @@ export default function Root() {
     } else {
         return (
             <ReactReduxProvider store={store}>
-                <ReactNativePaperProvider>
-                    <PersistGate persistor={persistor}>
+                <PersistGate persistor={persistor}>
+                    <ReactNativePaperProvider>
                         <SafeAreaProvider>
                             <Navigation colorScheme={colorScheme} />
                             <StatusBar />
                         </SafeAreaProvider>
-                    </PersistGate>
-                </ReactNativePaperProvider>
+                    </ReactNativePaperProvider>
+                </PersistGate>
             </ReactReduxProvider>
         );
     }

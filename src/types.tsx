@@ -37,7 +37,7 @@ export type Meal = {
 };
 
 export type MealState = {
-    plan: Array<Meal>,
+    plan: Meal[],
 };
 
 export type RootState = {
@@ -87,15 +87,9 @@ export type BottomTabParamList = {
     SettingsTab: undefined,
 };
 
-export type ExerciseTabParamList = {
+export type ScreenStackParamList = {
     ExerciseTabScreen: undefined,
-};
-
-export type MealTabParamList = {
     MealTabScreen: undefined,
-};
-
-export type SettingsTabParamList = {
     SettingsMenuScreen: undefined,
     ExercisePlanScreen: undefined,
     CreateExerciseScreen: undefined,
