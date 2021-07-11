@@ -1,16 +1,15 @@
 import { StackScreenProps } from '@react-navigation/stack';
 import * as React from 'react';
-import { StyleSheet } from 'react-native';
 import { List } from 'react-native-paper';
 
-import { View } from '../components/Themed';
+import Container from '../components/Container';
 import { SettingsTabParamList } from '../types';
 
 export default function SettingsMenuScreen({
     navigation,
 }: StackScreenProps<SettingsTabParamList, 'SettingsMenuScreen'>) {
     return (
-        <View style={styles.container}>
+        <Container>
             <List.Item
                 title="Exercise Plan"
                 description="Plan the elements of your routine"
@@ -23,12 +22,6 @@ export default function SettingsMenuScreen({
                 onPress={() => {}}
                 left={props => <List.Icon {...props} icon="food-variant" />}
             />
-        </View>
+        </Container>
     );
 }
-
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-    },
-});

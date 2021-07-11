@@ -3,8 +3,9 @@ import { StackNavigationProp, StackScreenProps } from '@react-navigation/stack';
 import * as React from 'react';
 import { ScrollView, StyleSheet } from 'react-native';
 import { Avatar, Button, Caption, Card, FAB, Headline, Paragraph, Subheading, Title } from 'react-native-paper';
-import IncompleteExercisePlanBanner from '../components/IncompleteExercisePlanBanner';
 
+import Container from '../components/Container';
+import IncompleteExercisePlanBanner from '../components/IncompleteExercisePlanBanner';
 import { View } from '../components/Themed';
 import { exerciseTargets } from '../constants';
 import { useDeleteExercise } from '../store/actions';
@@ -129,7 +130,7 @@ export default function ExercisePlanScreen({
     };
 
     return (
-        <View style={styles.container}>
+        <Container>
             <IncompleteExercisePlanBanner />
             {exercisePlan.length > 0 ? (
                 <ExercisePlan exercisePlan={exercisePlan} />
@@ -142,14 +143,11 @@ export default function ExercisePlanScreen({
                 onPress={toCreateExercise}
                 style={styles.fab}
             />
-        </View>
+        </Container>
     );
 }
 
 const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-    },
     containerEmptyState: {
         flex: 1,
         alignItems: 'center',
@@ -157,7 +155,7 @@ const styles = StyleSheet.create({
     },
     scroll: {
         padding: 20,
-        paddingBottom: 50,
+        paddingBottom: 60,
     },
     card: {
         marginBottom: 20,
