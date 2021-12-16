@@ -116,6 +116,7 @@ export type Action =
  */
 
 export type RootStackParamList = {
+    Login: undefined,
     Root: undefined,
     NotFound: undefined,
 };
@@ -127,6 +128,7 @@ export type BottomTabParamList = {
 };
 
 export type ScreenStackParamList = {
+    LoginScreen: undefined,
     DailyExerciseScreen: undefined,
     ExerciseTrackerScreen: undefined,
     MealTabScreen: undefined,

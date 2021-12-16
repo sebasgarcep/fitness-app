@@ -5,7 +5,7 @@
     "version": "0.1.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
-    "scheme": "myapp",
+    "scheme": "fitnessapp",
     "userInterfaceStyle": "automatic",
     "splash": {
       "image": "./assets/images/splash.png",
@@ -19,9 +19,11 @@
       "**/*"
     ],
     "ios": {
+      "bundleIdentifier": "fitness.app",
       "supportsTablet": true
     },
     "android": {
+      "package": "fitness.app",
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/adaptive-icon.png",
         "backgroundColor": "#ffffff"
