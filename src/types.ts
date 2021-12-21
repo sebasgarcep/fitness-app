@@ -1,6 +1,8 @@
-/**
- * App State
- */
+export type Session = {
+    scheme: string,
+    credentials: string,
+    expiresAt: number,
+};
 
 export type ExerciseTarget = 'cardio' | 'quads' | 'glutes' | 'push' | 'pull' | 'core';
 
@@ -29,6 +31,10 @@ export type ExerciseTracker = {
     steps: ExerciseStep[],
 };
 
+/**
+ * App State
+ */
+
 export type ExerciseState = {
     plan: Exercise[],
     tracker: Record<string, ExerciseTracker>,
@@ -54,10 +60,15 @@ export type MealState = {
     plan: Meal[],
 };
 
+export type SessionState = {
+    session: Session | null,
+};
+
 export type RootState = {
     exercises: ExerciseState,
     globals: GlobalState,
     meals: MealState,
+    session: SessionState,
 };
 
 /**
@@ -100,6 +111,11 @@ export type ProgressExerciseTrackerStepAction = {
     progress: number,
 };
 
+export type LoginAction = {
+    type: 'LOGIN',
+    session: Session,
+};
+
 export type Action =
     | CreateExerciseAction
     | EditExerciseAction
@@ -108,6 +124,7 @@ export type Action =
     | CompleteExerciseTrackerStepAction
     | SkipExerciseTrackerStepAction
     | ProgressExerciseTrackerStepAction
+    | LoginAction
 ;
 
 /**
@@ -116,6 +133,7 @@ export type Action =
  */
 
 export type RootStackParamList = {
+    Login: undefined,
     Root: undefined,
     NotFound: undefined,
 };
@@ -127,6 +145,7 @@ export type BottomTabParamList = {
 };
 
 export type ScreenStackParamList = {
+    LoginScreen: undefined,
     DailyExerciseScreen: undefined,
     ExerciseTrackerScreen: undefined,
     MealTabScreen: undefined,
