@@ -7,7 +7,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import * as React from 'react';
 import { IconButton } from 'react-native-paper';
 
-import Colors from '../constants/Colors';
+import colors from '../constants/colors';
 import useColorScheme from '../hooks/useColorScheme';
 import { BottomTabParamList } from '../types';
 import { ExerciseTabNavigator, MealTabNavigator, SettingsTabNavigator } from './ScreenStackNavigator';
@@ -23,7 +23,7 @@ export default function BottomTabNavigator() {
     return (
         <BottomTab.Navigator
             initialRouteName="ExerciseTab"
-            tabBarOptions={{ activeTintColor: Colors[colorScheme].tint }}
+            tabBarOptions={{ activeTintColor: colors[colorScheme].tint }}
         >
             <BottomTab.Screen
                 name="ExerciseTab"

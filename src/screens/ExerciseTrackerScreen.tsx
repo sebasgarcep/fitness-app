@@ -7,7 +7,7 @@ import { Button, Divider, Headline, List } from 'react-native-paper';
 import Container from '../components/Container';
 import { View } from '../components/Themed';
 import Timer from '../components/Timer';
-import Colors from '../constants/Colors';
+import colors from '../constants/colors';
 import { useBeginExerciseTracker, useCompleteExerciseTrackerStep, useProgressExerciseTrackerStep, useSkipExerciseTrackerStep } from '../store/actions';
 import { useExerciseTracker } from '../store/selectors';
 import { ExerciseStep, ExerciseTracker, ScreenStackParamList } from '../types';
@@ -224,7 +224,7 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
     },
     beginButton: {
-        backgroundColor: Colors.light.tint,
+        backgroundColor: colors.light.tint,
         width: 200,
         height: 200,
         borderRadius: 100,
@@ -236,7 +236,7 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
     },
     repsWrapper: {
-        backgroundColor: Colors.light.tint,
+        backgroundColor: colors.light.tint,
         width: 200,
         height: 200,
         borderRadius: 100,

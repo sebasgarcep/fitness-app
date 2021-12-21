@@ -7,9 +7,9 @@ import {
     Exercise,
     ProgressExerciseTrackerStepAction,
     SkipExerciseTrackerStepAction,
-} from "../../types"
-import { toDateString } from "../../utils";
-import { withDispatch } from "./utils"
+} from '../../types';
+import { toDateString } from '../../utils';
+import { withDispatch } from './utils';
 
 export const useCreateExercise = withDispatch((exercise: Exercise): CreateExerciseAction => ({
     type: 'CREATE_EXERCISE',
