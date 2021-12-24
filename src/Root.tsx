@@ -5,7 +5,7 @@ import React from 'react';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { Provider as ReactReduxProvider } from 'react-redux';
 import { PersistGate } from 'redux-persist/integration/react';
-import { Provider as ReactNativePaperProvider } from 'react-native-paper';
+import { Provider as ReactNativePaperProvider, DefaultTheme, DarkTheme } from 'react-native-paper';
 
 import useCachedResources from './hooks/useCachedResources';
 import useColorScheme from './hooks/useColorScheme';
@@ -14,7 +14,6 @@ import { persistor, store } from './store';
 
 export default function Root() {
     const isLoadingComplete = useCachedResources();
-    const colorScheme = useColorScheme();
 
     if (!isLoadingComplete) {
         return null;
@@ -22,14 +21,21 @@ export default function Root() {
         return (
             <ReactReduxProvider store={store}>
                 <PersistGate persistor={persistor}>
-                    <ReactNativePaperProvider>
-                        <SafeAreaProvider>
-                            <Navigation colorScheme={colorScheme} />
-                            <StatusBar />
-                        </SafeAreaProvider>
-                    </ReactNativePaperProvider>
+                    <RootWithRedux />
                 </PersistGate>
             </ReactReduxProvider>
         );
     }
+}
+
+function RootWithRedux() {
+    const colorScheme = useColorScheme();
+    return (
+        <ReactNativePaperProvider theme={colorScheme === 'dark' ?  DarkTheme : DefaultTheme}>
+            <SafeAreaProvider>
+                <Navigation colorScheme={colorScheme} />
+                <StatusBar />
+            </SafeAreaProvider>
+        </ReactNativePaperProvider>
+    );
 }

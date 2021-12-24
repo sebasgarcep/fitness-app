@@ -36,6 +36,7 @@ export type ExerciseState = {
 
 export type GlobalState = {
     randomSeed: string,
+    theme: null | 'light' | 'dark',
 };
 
 export type RootState = {
@@ -83,6 +84,11 @@ export type ProgressExerciseTrackerStepAction = {
     progress: number,
 };
 
+export type SetThemeAction = {
+    type: 'SET_THEME_ACTION',
+    theme: null | 'light' | 'dark',
+};
+
 export type Action =
     | CreateExerciseAction
     | EditExerciseAction
@@ -91,6 +97,7 @@ export type Action =
     | CompleteExerciseTrackerStepAction
     | SkipExerciseTrackerStepAction
     | ProgressExerciseTrackerStepAction
+    | SetThemeAction
 ;
 
 /**
