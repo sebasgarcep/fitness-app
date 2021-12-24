@@ -44,22 +44,6 @@ export type GlobalState = {
     randomSeed: string,
 };
 
-export type MealType = 'breakfast' | 'lunch' | 'dinner';
-
-export type Meal = {
-    id: string,
-    type: MealType,
-    name: string,
-    img: string,
-    rounds: number,
-    reps?: number,
-    time?: number,
-};
-
-export type MealState = {
-    plan: Meal[],
-};
-
 export type SessionState = {
     session: Session | null,
 };
@@ -67,7 +51,6 @@ export type SessionState = {
 export type RootState = {
     exercises: ExerciseState,
     globals: GlobalState,
-    meals: MealState,
     session: SessionState,
 };
 
@@ -140,7 +123,6 @@ export type RootStackParamList = {
 
 export type BottomTabParamList = {
     ExerciseTab: undefined,
-    MealTab: undefined,
     SettingsTab: undefined,
 };
 
@@ -148,7 +130,6 @@ export type ScreenStackParamList = {
     LoginScreen: undefined,
     DailyExerciseScreen: undefined,
     ExerciseTrackerScreen: undefined,
-    MealTabScreen: undefined,
     SettingsMenuScreen: undefined,
     ExercisePlanScreen: undefined,
     CreateExerciseScreen: undefined,

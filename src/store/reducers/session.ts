@@ -4,7 +4,7 @@ const initialState: SessionState = {
     session: null,
 };
 
-export default function meals(state: SessionState = initialState, action: Action) {
+export default function session(state: SessionState = initialState, action: Action) {
     switch (action.type) {
         case 'LOGIN': {
             return {

@@ -16,12 +16,6 @@ export default function SettingsMenuScreen({
                 onPress={() => navigation.navigate("ExercisePlanScreen")}
                 left={props => <List.Icon {...props} icon="dumbbell" />}
             />
-            <List.Item
-                title="Meal Plan"
-                description="Choose the dishes you want to eat"
-                onPress={() => {}}
-                left={props => <List.Icon {...props} icon="food-variant" />}
-            />
         </Container>
     );
 }

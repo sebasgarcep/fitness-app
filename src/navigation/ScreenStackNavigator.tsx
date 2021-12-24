@@ -3,7 +3,6 @@ import * as React from 'react';
 
 import { ScreenStackParamList } from '../types';
 import DailyExerciseScreen from '../screens/DailyExerciseScreen';
-import MealTabScreen from '../screens/MealTabScreen';
 import SettingsMenuScreen from '../screens/SettingsMenuScreen';
 import ExercisePlanScreen from '../screens/ExercisePlanScreen';
 import CreateExerciseScreen from '../screens/CreateExerciseScreen';
@@ -20,11 +19,6 @@ function createScreenStackNavigator(initialRouteName: keyof ScreenStackParamList
                     name="DailyExerciseScreen"
                     component={DailyExerciseScreen}
                     options={{ headerTitle: 'Exercises' }}
-                />
-                <ScreenStack.Screen
-                    name="MealTabScreen"
-                    component={MealTabScreen}
-                    options={{ headerTitle: 'Meals' }}
                 />
                 <ScreenStack.Screen
                     name="SettingsMenuScreen"
@@ -59,5 +53,4 @@ function createScreenStackNavigator(initialRouteName: keyof ScreenStackParamList
 // Each tab has its own navigation stack, you can read more about this pattern here:
 // https://reactnavigation.org/docs/tab-based-navigation#a-stack-navigator-for-each-tab
 export const ExerciseTabNavigator = createScreenStackNavigator("DailyExerciseScreen");
-export const MealTabNavigator = createScreenStackNavigator("MealTabScreen");
 export const SettingsTabNavigator = createScreenStackNavigator("SettingsMenuScreen");

@@ -9,7 +9,7 @@ import { IconButton } from 'react-native-paper';
 
 import useTheme from '../hooks/useTheme';
 import { BottomTabParamList } from '../types';
-import { ExerciseTabNavigator, MealTabNavigator, SettingsTabNavigator } from './ScreenStackNavigator';
+import { ExerciseTabNavigator, SettingsTabNavigator } from './ScreenStackNavigator';
 
 /**
  * Learn more about createBottomTabNavigator:
@@ -30,14 +30,6 @@ export default function BottomTabNavigator() {
                 options={{
                     tabBarIcon: ({ color }) => <TabBarIcon icon="dumbbell" color={color} />,
                     tabBarLabel: "Exercises",
-                }}
-            />
-            <BottomTab.Screen
-                name="MealTab"
-                component={MealTabNavigator}
-                options={{
-                    tabBarIcon: ({ color }) => <TabBarIcon icon="food-variant" color={color} />,
-                    tabBarLabel: "Meals",
                 }}
             />
             <BottomTab.Screen
