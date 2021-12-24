@@ -77,7 +77,7 @@ export default function ExerciseForm({ id, onSubmit }: ExerciseFormProps) {
             }
 
             onSubmit(data);
-        } catch (error) {
+        } catch (error: any) {
             setErrorMsg(error.message)
         }
     };

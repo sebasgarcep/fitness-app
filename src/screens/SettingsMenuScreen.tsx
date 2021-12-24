@@ -38,7 +38,7 @@ export default function SettingsMenuScreen({
             />
             <List.Item
                 title="Logout"
-                description="Plan the elements of your routine"
+                description="Log out of the application"
                 onPress={onPressLogout}
                 left={props => <List.Icon {...props} icon="dumbbell" />}
             />
