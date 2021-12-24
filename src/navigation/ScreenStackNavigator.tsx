@@ -18,7 +18,7 @@ function createScreenStackNavigator(initialRouteName: keyof ScreenStackParamList
                 <ScreenStack.Screen
                     name="DailyExerciseScreen"
                     component={DailyExerciseScreen}
-                    options={{ headerTitle: 'Exercises' }}
+                    options={{ headerTitle: 'Exercise' }}
                 />
                 <ScreenStack.Screen
                     name="SettingsMenuScreen"
