@@ -34,9 +34,6 @@ export default {
 		web: {
 			favicon: "./assets/images/favicon.png",
 		},
-        extra: {
-            GOOGLE_CLIENT_ID: process.env.GOOGLE_CLIENT_ID,
-			SERVER_HOST: process.env.SERVER_HOST,
-        },
+        extra: {},
 	},
 };
