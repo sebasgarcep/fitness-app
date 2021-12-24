@@ -163,9 +163,6 @@ export default function exercises(state: ExerciseState = initialState, action: A
                 },
             };
         }
-        case 'LOGOUT': {
-            return initialState;
-        }
         default: {
             return state;
         }
