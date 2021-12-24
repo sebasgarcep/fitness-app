@@ -6,6 +6,9 @@ const initialState: GlobalState = {
 
 export default function globals(state: GlobalState = initialState, action: Action) {
     switch (action.type) {
+        case 'LOGOUT': {
+            return initialState;
+        }
         default: {
             return state;
         }

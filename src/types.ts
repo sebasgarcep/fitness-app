@@ -99,6 +99,10 @@ export type LoginAction = {
     session: Session,
 };
 
+export type LogoutAction = {
+    type: 'LOGOUT',
+};
+
 export type Action =
     | CreateExerciseAction
     | EditExerciseAction
@@ -108,6 +112,7 @@ export type Action =
     | SkipExerciseTrackerStepAction
     | ProgressExerciseTrackerStepAction
     | LoginAction
+    | LogoutAction
 ;
 
 /**

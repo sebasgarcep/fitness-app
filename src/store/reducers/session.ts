@@ -12,6 +12,9 @@ export default function session(state: SessionState = initialState, action: Acti
                 session: action.session,
             };
         }
+        case 'LOGOUT': {
+            return initialState;
+        }
         default: {
             return state;
         }
