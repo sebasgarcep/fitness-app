@@ -7,7 +7,7 @@ import { Button, Divider, Headline, List } from 'react-native-paper';
 import Container from '../components/Container';
 import { View } from '../components/Themed';
 import Timer from '../components/Timer';
-import colors from '../constants/colors';
+import useTheme from '../hooks/useTheme';
 import { useBeginExerciseTracker, useCompleteExerciseTrackerStep, useProgressExerciseTrackerStep, useSkipExerciseTrackerStep } from '../store/actions';
 import { useExerciseTracker } from '../store/selectors';
 import { ExerciseStep, ExerciseTracker, ScreenStackParamList } from '../types';
@@ -18,10 +18,11 @@ type BeginExerciseTrackerProps = {
 
 function BeginExerciseTracker({ date }: BeginExerciseTrackerProps) {
     const beginExerciseTracker = useBeginExerciseTracker();
+    const theme = useTheme();
     return (
         <Container style={styles.beginStateContainer}>
             <TouchableOpacity
-                style={styles.beginButton}
+                style={[styles.beginButton, { backgroundColor: theme.tint }]}
                 onPress={() => beginExerciseTracker(date)}
             >
                 <Headline>Begin</Headline>
@@ -38,9 +39,10 @@ type RepsExerciseTrackerProps = {
 function RepsExerciseTracker({ date, step }: RepsExerciseTrackerProps) {
     const skipExerciseTrackerStep = useSkipExerciseTrackerStep();
     const completeExerciseTrackerStep = useCompleteExerciseTrackerStep();
+    const theme = useTheme();
     return (
         <Container style={styles.repsStateContainer}>
-            <View style={styles.repsWrapper}>
+            <View style={[styles.repsWrapper, { backgroundColor: theme.tint }]}>
                 <Headline>{step.total} reps</Headline>
             </View>
             <View style={styles.repsActionsWrapper}>
@@ -224,7 +226,6 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
     },
     beginButton: {
-        backgroundColor: colors.light.tint,
         width: 200,
         height: 200,
         borderRadius: 100,
@@ -236,7 +237,6 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
     },
     repsWrapper: {
-        backgroundColor: colors.light.tint,
         width: 200,
         height: 200,
         borderRadius: 100,
